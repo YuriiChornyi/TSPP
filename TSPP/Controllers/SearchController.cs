@@ -23,23 +23,23 @@ namespace TSPP.Controllers
             {
                 var res1 = _context.Cinema.Select(x => x).ToList();
                 var res3 = _context.Movie.Select(x => x).ToList();
-                Cinema cinema = null;
-                Movie movie = null;
+                List<Cinema> cinema = null;
+                List<Movie> movie = null;
                 List<Comments> comments = null;
                 foreach (var item in res1)
                 {
                     if (item.Name.ToLower().Contains(search.ToLower()))
                     {
-                        cinema = item;
-                        comments = _context.Comments.Select(x => x).Where(x => x.CinemaId == cinema.CinemaId).ToList();
+                        cinema.Add(item);
+                        comments = _context.Comments.Select(x => x).Where(x => x.CinemaId == cinema[0].CinemaId).ToList();
                     }
                 }
                 foreach (var item in res3)
                 {
                     if (item.Name.ToLower().Contains(search.ToLower()))
                     {
-                        movie = item;
-                        comments = _context.Comments.Select(x => x).Where(x => x.MovieId == movie.MovieId).ToList();
+                        movie.Add(item);
+                        comments = _context.Comments.Select(x => x).Where(x => x.MovieId == movie[0].MovieId).ToList();
                     }
                 }
                 if (cinema == null && movie == null)

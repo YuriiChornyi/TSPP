@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,11 +42,11 @@
                     <button type="submit" class="btn btn-danger">Пошук</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Вхід</a></li>
-                    <li><a asp-area="" asp-controller="Movies" asp-action="Index">Реєстрація</a></li>
+                    <li><a asp-area="" asp-controller="Users" asp-action="LogIn">Вхід</a></li>
+                    <li><a asp-area="" asp-controller="Users" asp-action="Index">Реєстрація</a></li>
                 </ul>
             </div>
-            
+
         </div>
     </nav>
     <div class="container body-content">

@@ -15,6 +15,7 @@ namespace TSPP.Models.DB
         public int CinemaId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int SessionId { get; set; }
 
         public ICollection<CinemaSession> CinemaSession { get; set; }
