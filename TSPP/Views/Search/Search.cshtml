@@ -1,0 +1,85 @@
+﻿@using System.Diagnostics
+@using TSPP.Models.DB
+
+@{
+    ViewData["Title"] = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Cinema C = null;
+    Movie M = null;
+    List<Comments> comments = ViewBag.Comments;
+    try
+    {
+        C = (Cinema)ViewBag.Data;
+    }
+    catch (Exception e)
+    {
+        Debug.WriteLine(e);
+        M = (Movie)ViewBag.Data;
+    }
+}
+
+
+
+@{
+    if (C == null && M == null)
+    {
+        <h1>
+            Вибачте за вашим запитом нічого не знайдено
+        </h1>
+    }
+    else
+    {
+        if (C != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h1>
+                        @C.Name
+                    </h1>
+                    <h3>
+                        @C.Address
+                    </h3>
+                </div>
+            </div>
+            <hr />
+        }
+        if (M != null)
+        {
+
+
+            string @base64String = Convert.ToBase64String(M.Img);
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@M.Name class="img-responsive" />
+                </div>
+                <div class="col-md-8">
+                    <h2>
+                        @M.Name
+                    </h2>
+                    <h4 class="text-justify">
+                        @M.Discription
+                    </h4>
+                    <hr />
+                </div>
+            </div>
+        }
+
+        foreach (var item in comments)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <p>
+                        @item.User.Name
+                    </p>
+                </div>
+                <div class="col-md-9">
+                    <h4>
+                        @item.Comment
+                    </h4>
+                </div>
+            </div>
+        }
+    }
+
+}
