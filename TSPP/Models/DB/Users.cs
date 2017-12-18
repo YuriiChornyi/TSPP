@@ -13,8 +13,20 @@ namespace TSPP.Models.DB
         }
         [HiddenInput(DisplayValue = false)]
         public int UserId { get; set; }
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
+        [Display(Name = "User name")]
         public string Name { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 7)]
+        [Display(Name = "Email")]
+        [UIHint("Email")]
         public string Email { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 6)]
+        [Display(Name = "Password")]
+        [UIHint("Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         [ScaffoldColumn(true)]
         public bool IsAdmin { get; set; }

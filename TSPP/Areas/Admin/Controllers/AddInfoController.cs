@@ -16,7 +16,7 @@ namespace TSPP.Areas.Admin.Controllers
         {
             _context = context;
         }
-        public IActionResult AddMovie()
+        public ActionResult AddMovie()
         {
             return View();
         }

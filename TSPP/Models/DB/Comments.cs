@@ -9,10 +9,16 @@ namespace TSPP.Models.DB
     {
         [HiddenInput(DisplayValue = false)]
         public int CommentId { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int CinemaId { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int MovieId { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int UserId { get; set; }
         [UIHint("MultilineText")]
+        [Required]
+        [StringLength(60, MinimumLength = 3)]
+        [Display(Name = "Comment")]
         public string Comment { get; set; }
 
         public Cinema Cinema { get; set; }

@@ -13,9 +13,11 @@ namespace TSPP.Models.DB
         }
         [HiddenInput(DisplayValue = false)]
         public int SessionId { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int HallId { get; set; }
+        [HiddenInput(DisplayValue = false)]
         public int MovieId { get; set; }
 
         public Hall Hall { get; set; }
