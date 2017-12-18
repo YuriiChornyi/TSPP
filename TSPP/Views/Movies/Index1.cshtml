@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TSPP.Models.DB.Movie>
+
+@{
+    ViewData["Title"] = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+@{
+
+    foreach (var item in Model)
+    {
+        string @base64String = Convert.ToBase64String(item.Img);
+        <div class="row">
+            <div class="col-md-4">
+                <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" />
+            </div>
+            <div class="col-md-8">
+                <h2>
+                    @item.Name
+                </h2>
+                <h4 class="text-justify">
+                    @item.Discription
+                </h4>
+                <hr />
+            </div>
+        </div>
+        <hr />
+    }
+}

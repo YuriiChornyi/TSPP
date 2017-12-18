@@ -36,14 +36,18 @@ namespace TSPP.Controllers
                     {
                         if (item.IsAdmin)
                         {
-                            //return RedirectToRoutePermanent("Index", "Movies",);
+                            return RedirectToAction("AddMovie", "AddInfo", new { area="Admin" });
                         }
-                        CookieOptions option = new CookieOptions();
-                        option.Expires = DateTime.Now.AddDays(2);
+                        else
+                        {
+                            CookieOptions option = new CookieOptions();
+                            option.Expires = DateTime.Now.AddDays(2);
 
-                        Response.Cookies.Append("User", item.UserId.ToString(), option);
-                        //Request.Cookies["User"]
-                        return RedirectToAction("Index", "Movies");
+                            Response.Cookies.Append("User", item.UserId.ToString(), option);
+                            //Request.Cookies["User"]
+                            return RedirectToAction("Index", "Movies");
+                        }
+                       
                     }
                 }
             }

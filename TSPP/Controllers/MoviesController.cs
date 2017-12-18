@@ -23,9 +23,16 @@ namespace TSPP.Controllers
         {
             return View(await _context.Movie.ToListAsync());
         }
-        public async Task<IActionResult> Index(int ?id)
+        public async Task<IActionResult> Index1(int ?id)
         {
-            return View();
+            var res = _context.Movie.Select(x => x).ToList();
+            List<Movie> res1=null;
+            if (id!=null)
+            {
+                res1 = res.Select(x => x).Where(x => x.MovieId == id).ToList();
+            }
+            ViewBag.Movie = res1;
+            return View(res1);
         }
 
     }

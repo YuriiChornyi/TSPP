@@ -23,9 +23,9 @@ namespace TSPP.Controllers
             {
                 var res1 = _context.Cinema.Select(x => x).ToList();
                 var res3 = _context.Movie.Select(x => x).ToList();
-                List<Cinema> cinema = null;
-                List<Movie> movie = null;
-                List<Comments> comments = null;
+                List<Cinema> cinema = new List<Cinema>();
+                List<Movie> movie = new List<Movie>();
+                List<Comments> comments = new List<Comments>();
                 foreach (var item in res1)
                 {
                     if (item.Name.ToLower().Contains(search.ToLower()))
@@ -39,7 +39,7 @@ namespace TSPP.Controllers
                     if (item.Name.ToLower().Contains(search.ToLower()))
                     {
                         movie.Add(item);
-                        comments = _context.Comments.Select(x => x).Where(x => x.MovieId == movie[0].MovieId).ToList();
+                        return RedirectToAction("Index1", "Movies", new { id = @item.MovieId });
                     }
                 }
                 if (cinema == null && movie == null)
@@ -64,7 +64,7 @@ namespace TSPP.Controllers
             {
                 
             }
-           
+
             return View();
         }
     }

@@ -45,8 +45,12 @@ namespace TSPP
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "Admin",
+                    template: "{area:exists}/{controller=AddInfo}/{action=AddMovie}/{id?}");
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Movies}/{action=Index}/{id?}");
             });
         }
     }

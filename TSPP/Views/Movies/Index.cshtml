@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    bool b = true;
 }
 
 
@@ -29,31 +28,27 @@
         @foreach (var item in Model)
         {
             string @base64String = Convert.ToBase64String(item.Img);
-            if (item.MovieId==14)
+            if (item.MovieId==19)
             {
                 <div class="item active" style="background-color: mediumpurple">
                     <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" style="width: 30%"/>
                     <div class="carousel-caption" role="option">
-                        <p>
+                        <form method="post">
                             @item.Name
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                            @Html.ActionLink("Детальніше", "Index", "Movies", new { id = item.MovieId }, new { @class = "btn btn-default" })
+                        </form>
                     </div>
                 </div>
             }
-            if (item.MovieId!=14)
+            if (item.MovieId!=19)
             {
                 <div class="item" style="background-color: mediumpurple">
                     <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" style="width: 30%"/>
                     <div class="carousel-caption" role="option">
-                        <p>
+                        <form method="post" action="/Movies/Index1">
                             @item.Name
-                            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                                Learn More
-                            </a>
-                        </p>
+                            @Html.ActionLink("Детальніше", "Index1", "Movies", new { id =item.MovieId }, new {@class="btn btn-default" })
+                        </form>
                     </div>
                 </div>
             }
