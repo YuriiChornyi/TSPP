@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TSPP.Models.ViewModels.SessionsModel>
+@{
+    ViewData["Title"] = "Sessions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        @{
+            foreach (var item in Model)
+            {
+                string @base64String = Convert.ToBase64String(item.MovieImg);
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="/Movies/Index1/@item.MovieId">
+                            <h3>
+                                @item.MovieName
+                            </h3>
+                            <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.MovieName class="img-responsive" style="width: 35%; height: 50%" />
+
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <br />
+                        <br />
+                        <h4>@item.CinemaName</h4>
+                        <br />
+                        <h4>@item.Date</h4>
+                    </div>
+
+
+
+                </div>
+                <hr />
+
+            }
+        }
+
+    </div>
+
+    <div class="col-md-1"></div>
+</div>

@@ -1,32 +1,58 @@
-﻿@model IEnumerable<TSPP.Models.DB.Movie>
+﻿
+@model TSPP.Models.ViewModels.MovieModel
 
 @{
-    ViewData["Title"] = "Index1";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 
 
 @{
-
-    foreach (var item in Model)
-    {
-        string @base64String = Convert.ToBase64String(item.Img);
-        <div class="row">
-            <div class="col-md-4">
-                <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" />
-            </div>
-            <div class="col-md-8">
-                <h2>
-                    @item.Name
-                </h2>
-                <h4 class="text-justify">
-                    @item.Discription
-                </h4>
-                <hr />
-            </div>
+    string @base64String = Convert.ToBase64String(Model.Img);
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@Model.MovieName class="img-responsive" />
         </div>
-        <hr />
-    }
+        <div class="col-md-8">
+            <h2>
+                @Model.MovieName
+            </h2>
+            <h4 class="text-justify">
+                @Model.Discription
+            </h4>
+            <h3>
+                Тривалість:
+            </h3>
+            <h5>
+                @Model.Length
+            </h5>
+            <h3>
+                Технологія:
+            </h3>
+            <h5>
+                @Model.Tecnology
+            </h5>
+
+            
+
+        </div>
+    </div>
 }
+    @for (int i = 0; i < Model.c.Count; i++)
+     {<hr />
+         <div class="row">
+             <div class="col-md-12">
+                 <h3>
+                     @Model.c[i].UserName
+                 </h3>
+                 <h4>
+                     @Model.c[i].CommentText
+                 </h4>
+             </div>
+
+         </div>
+     }
+    <hr />
+
+
