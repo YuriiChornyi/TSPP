@@ -6,8 +6,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
+@if (ViewBag.UserId != null)
+{
+    @section user_exit
+        {
+        <ul class="nav navbar-nav navbar-right">
+            <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+        </ul>
+    }
+}
 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -28,7 +35,7 @@
         @foreach (var item in Model)
         {
             string @base64String = Convert.ToBase64String(item.Img);
-            if (item.MovieId==14)//19
+            if (item.MovieId==19)//19
             {
                 <div class="item active" style="background-color: mediumpurple">
                     <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" style="width: 30%"/>
@@ -40,7 +47,7 @@
                     </div>
                 </div>
             }
-            if (item.MovieId!=14)//19
+            if (item.MovieId!=19)//19
             {
                 <div class="item" style="background-color: mediumpurple">
                     <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" style="width: 30%"/>

@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 
@@ -55,4 +56,19 @@
      }
     <hr />
 
+@{
+    if (ViewBag.UserId != null)
+    {
+        @section user_exit
+            {
+            <ul class="nav navbar-nav navbar-right">                
+                <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+            </ul>
+        }
+        <h1>
+            Напишіть коментар:
+        </h1>
+        @Html.Partial("PartialCommentView", new List<int> {Convert.ToInt32(ViewBag.UserId),Convert.ToInt32(Model.MovieId) })
 
+    }
+}

@@ -1,0 +1,75 @@
+﻿@using TSPP.Models.DB
+@{
+    ViewData["Title"] = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<Movie> m = ViewBag.Movies;
+}
+
+<div class="table-responsive">
+    <table class="table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Обкладинка
+                </th>
+                <th>
+                    Назва фільму
+                </th>
+                <th>
+                    Опис
+                </th>
+                <th>
+                    Тривалість
+                </th>
+                <th>
+                    Технологія показу
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                foreach (var item in m)
+                {
+
+                    string @base64String = Convert.ToBase64String(item.Img);
+                    <tr>
+                        <td>
+                            <img src="@String.Format("data:image/png;base64,{0}", @base64String)" alt=@item.Name class="img-responsive" />
+                        </td>
+
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Discription
+                        </td>
+                        <td>
+                            @item.Length
+                        </td>
+                        <td>
+                            @item.Tecnology
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+@{
+    if (ViewBag.UserId != null)
+    {
+        @section user_exit
+            {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+            </ul>
+        }
+    }
+}
+<h2>Show</h2>
+

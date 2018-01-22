@@ -66,6 +66,11 @@ namespace TSPP.Controllers
                 SessionsModel s=new SessionsModel(item.SessionId,item.Date,item.HallId,item.MovieId,item.MovieName,item.MovieImg,item.CinemaId,item.CinemaName);
                 list.Add(s);
             }
+            var cookie = Request.Cookies["User"];
+            if (cookie != null)
+            {
+                ViewBag.UserId = cookie;
+            }
 
             return View(list);
         }

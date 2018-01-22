@@ -1,0 +1,60 @@
+﻿@using TSPP.Models.DB
+@{
+    ViewData["Title"] = "AddSession";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <form asp-action="AddSession" asp-controller="AddInfo" method="post" enctype="multipart/form-data">
+
+                <fieldset>
+                    <legend>Додати сеанс</legend>
+                    ID фільму:<br>
+                    <input class="form-control" type="text" name="movieid" /><br>
+                    ID залу:<br>
+                    <input class="form-control" type="text" name="hallid"><br>
+                    Час і дата:<br>
+                    <input class="form-control" type="datetime" name="datetime"><br>
+                    <input type="submit" class="btn btn-primary" value="Додати фільм">
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-6">
+
+            <hr />
+
+
+            @Html.ActionLink("Додати сеанс", "AddSession", "AddInfo")
+
+            <hr />
+
+
+            @Html.ActionLink("Додати кінотеатр", "AddCinema", "AddInfo")
+
+            <hr />
+
+            @Html.ActionLink("Додати користувача", "AddUser", "AddInfo")
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    @section user_exit
+        {
+        <ul class="nav navbar-nav navbar-right">
+            <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+        </ul>
+    }
+
+}
+
+
+
+
+

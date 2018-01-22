@@ -40,6 +40,16 @@
         }
 
     </div>
+    @if (ViewBag.UserId != null)
+    {
+        @section user_exit
+            {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+            </ul>
+        }
+    }
+
 
     <div class="col-md-1"></div>
 </div>

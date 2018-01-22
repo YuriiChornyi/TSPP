@@ -1,0 +1,59 @@
+﻿@model TSPP.Models.DB.Users
+
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddUser</h2>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <form asp-action="AddUser" asp-controller="AddInfo" method="post">
+
+            <fieldset>
+                <legend>Додати користувача:</legend>
+                Ім'я:<br>
+                <input class="form-control" type="text" name="name" /><br>
+                Емейл:<br>
+                <input class="form-control" type="text" name="email"><br>
+                Пароль:<br>
+                <input class="form-control" type="text" name="password"><br>
+                IsAdmin               
+                <input class="form-control" type="checkbox" name="isadmin" />
+                <input type="submit" class="btn btn-primary" value="Додати користувача">
+            </fieldset>
+        </form>
+    </div>
+    <div class="col-md-6">
+
+        <hr />
+
+
+        @Html.ActionLink("Додати сеанс", "AddSession", "AddInfo")
+
+        <hr />
+
+
+        @Html.ActionLink("Додати кінотеатр", "AddCinema", "AddInfo")
+
+        <hr />
+
+        @Html.ActionLink("Додати користувача", "AddUser", "AddInfo")
+    </div>
+
+
+
+</div>
+
+
+
+
+
+@section user_exit
+    {
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+    </ul>
+}

@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<int>
+
+    @{ 
+        int[] k=new int[2];
+        k[0] = Model.First<int>();
+        k[1] = Model.Last<int>();
+    }
+
+@using (Html.BeginForm(actionName: "Comment", controllerName:"Movies"))
+{
+    <fieldset>
+        <legend>
+
+            <textarea name="comment" rows="5" cols="50"></textarea>
+            <input type="hidden" name="UserId" value="@k[0]">
+            <input type="hidden" name="MovieId" value="@k[1]">
+            <button type="submit" class="btn btn-info">Залишити коментар</button>
+        </legend>
+    </fieldset>
+}

@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable<TSPP.Models.DB.Cinema>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    @{
+        foreach (var item in Model)
+        {
+
+            <div class="col-md-12">
+                <form method="post">
+                    <h1>@item.Name</h1>
+                    <h4>
+                        @item.Address
+                    </h4>
+                    @Html.ActionLink("Детальніше", "Info", "Cinema", new { id = @item.CinemaId }, new { @class = "btn btn-default" })
+                </form>
+
+            </div>
+            <hr />
+        }
+
+    }
+
+    @if (ViewBag.UserId != null)
+    {
+        @section user_exit
+            {
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-area="" asp-controller="Users" asp-action="Exit">Вихід</a></li>
+            </ul>
+        }
+    }
+</div>

@@ -19,6 +19,11 @@ namespace TSPP.Controllers
         [HttpPost]
         public ActionResult Search(string search)
         {
+            var cookie = Request.Cookies["User"];
+            if (cookie != null)
+            {
+                ViewBag.UserId = cookie;
+            }
             if (!string.IsNullOrEmpty(search))
             {
                 var res1 = _context.Cinema.Select(x => x).ToList();

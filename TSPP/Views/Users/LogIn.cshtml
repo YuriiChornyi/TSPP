@@ -3,6 +3,16 @@
 @{
     ViewData["Title"] = "LogIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{
+    if (ViewBag.Message != null)
+    {
+        <h1 style="color:red">
+            @ViewBag.Message
+        </h1>
+    }
 }
 
 <h2>LogIn</h2>
@@ -29,8 +39,14 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section user_exit
+    {
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Users" asp-action="LogIn">username</a></li>
+        <li><a asp-area="" asp-controller="Users" asp-action="Index">Register</a></li>
+    </ul>
+}
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
 

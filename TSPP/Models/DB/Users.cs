@@ -29,6 +29,7 @@ namespace TSPP.Models.DB
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [ScaffoldColumn(true)]
+        [HiddenInput(DisplayValue = false)]
         public bool IsAdmin { get; set; }
 
         public ICollection<Comments> Comments { get; set; }
